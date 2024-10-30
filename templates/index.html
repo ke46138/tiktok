@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="video">
+        <video autoplay loop class="current_video" id="{{ video.id }}">
+            <source src="/static/videos/{{ video.id }}.mp4" type="video/mp4">
+            Ваш браузер не поддерживает элемент video.
+        </video>
+        <video loop class="next_video" id="{{ next_video.id }}">
+            <source src="/static/videos/{{ next_video.id }}.mp4" type="video/mp4">
+            Ваш браузер не поддерживает элемент video.
+        </video>
+    </div>
+
+    <div class="controls">
+        <div class="play_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#5f6368"><path d="M320-258v-450q0-14 9-22t21-8q4 0 8 1t8 3l354 226q7 5 10.5 11t3.5 14q0 8-3.5 14T720-458L366-232q-4 2-8 3t-8 1q-12 0-21-8t-9-22Z"/></svg>
+        </div>
+        <div class="info">
+            <p class="name">@{{ video.author_name }}</p>
+            <p class="desc">{{ video.desc }}</p>
+        </div>
+    </div>
+
+    <script src="/static/index.js"></script>
+</body>
+</html>
