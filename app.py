@@ -1,6 +1,8 @@
 from flask import Flask
 import flask
 import json
+import tg_bot
+from multiprocessing import Process
 
 from databaser import Databaser
 
@@ -37,6 +39,10 @@ def next():
 def get_video(video_id):
     return json.dumps(db.get_video(int(video_id)))
 
+def start_bot():
+    tg_bot.start()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    p1 = Process(target=start_bot, daemon=True)
+    p1.start()
+    app.run(port=443, host="0.0.0.0", ssl_context=('fullchain.pem', 'privkey.pem'))
