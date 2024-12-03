@@ -32,6 +32,13 @@ class Databaser:
             
             self.connection.commit()
 
+    def get_last_video_id(self):
+        with self.connection:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT id FROM videos ORDER BY id DESC LIMIT 1")
+            result = cursor.fetchone()
+            return result[0] if result else 0
+
     def get_video(self, video_id):
         with self.connection:
             cursor = self.connection.cursor()
@@ -95,11 +102,5 @@ class Databaser:
 
 if __name__ == '__main__':
     db = Databaser()
-    db.add_video('env', 'eleday', 3)
-    db.add_video('hello world', 'eleday', 4)
-    db.add_video('Скачать картинку', 'eleday', 5)
-    db.add_video('Matplotlib', 'eleday', 6)
-    db.add_video('qr', 'eleday', 7)
-    db.add_video('Скриншот', 'eleday', 8)
-    db.add_video('sqlite', 'eleday', 9)
-    db.add_video('excel', 'eleday', 10)
+    db.add_video('Тест', 'Sigma', 1)
+    db.add_video('НЕ ПОВТОРЯЙТЕ ЭТО ДОЫВШГНМПДЙУЦ', 'Sigma', 2)
